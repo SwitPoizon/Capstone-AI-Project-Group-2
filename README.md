@@ -28,3 +28,22 @@ Key model outcomes and feature importances are visualized through:
 
 ## Recommendations
 To improve the model's predictive power for defaulting borrowers, techniques to address class imbalance such as oversampling (e.g., SMOTE), undersampling, or using class weights should be explored and implemented. Micro-finance institutions should leverage the identified high-impact features like `installment`, `log.annual.inc`, and `revol.bal` during loan application assessment to better evaluate repayment capacity and financial stability, potentially leading to adjusted loan terms or targeted financial literacy support. Further model tuning and exploration of other algorithms could also enhance predictive performance for the minority class.
+
+## Limitations of the Current Model (New Section Added)
+
+While the model provides valuable insights, several limitations should be acknowledged:
+
+## Severe Class Imbalance
+The overwhelming proportion of non-defaulting borrowers significantly affects model performance. As seen in the recall score for Class 1 (Default), the model fails to correctly identify most default cases, limiting its usefulness for risk-sensitive financial decisions.
+
+## Limited Feature Scope
+The dataset focuses primarily on financial and demographic attributes. Important behavioral factors (e.g., repayment history patterns, frequency of loan restructuring), macroeconomic indicators, or qualitative assessments are not included, which can reduce predictive strength.
+
+## Model Bias Toward Majority Class
+Despite good overall accuracy, the RandomForestClassifier tends to favor predicting non-defaults due to the imbalance. This introduces a bias that may expose the institution to higher credit risk.
+
+## Lack of Temporal Considerations
+Financial behavior and loan conditions change over time. The current model does not incorporate time-series patterns, seasonal lending behaviors, or changing economic conditions, which could affect prediction quality.
+
+## Potential Overfitting
+Although Random Forest helps reduce variance, there is still a possibility of overfitting due to the large number of trees and the complexity of interactions between features. Cross-validation and hyperparameter tuning are needed to confirm generalizability.
